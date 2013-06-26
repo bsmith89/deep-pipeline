@@ -2,7 +2,7 @@ An example bioinformatics pipeline using pymake.
 
 ## Dependencies
 
-  +  PyMake (github.com/bsmith89/pymake)
+  +  PyMake (https://github.com/bsmith89/pymake)
   +  HMMER3 (http://hmmer.janelia.org/software)
   +  getorf (an EMBOSS tool: http://emboss.sourceforge.net/download/#Stable/)
   +  python3 (and preferrably a virtualenv)
@@ -12,10 +12,10 @@ An example bioinformatics pipeline using pymake.
 ## Quickstart
 
 Once you have all of those tools installed,
-move sequence files into 'seq/raw/', hmm's and
-all of the hmm metadata tsv's into 'hmm/' and
+move sequence files into `seq/raw/`, hmm's and
+all of the hmm metadata tsv's into `hmm/` and
 edit the sample metadata, and the reference
-and target gene lists in 'meta/' if so desired.
+and target gene lists in `meta/` if so desired.
 
 Then:
 

@@ -12,7 +12,7 @@ An example bioinformatics pipeline using pymake.
 ## Quickstart
 
 Once you have all of those tools installed,
-move sequence files into `seq/raw/`, hmm's and
+move sequence files into `seq/`, hmm's and
 all of the hmm metadata tsv's into `hmm/` and
 edit the sample metadata, and the reference
 and target gene lists in `meta/` if so desired.

@@ -46,7 +46,7 @@ rules = [Rule("all",
                       "{preqs[1]} {preqs[2]} > {trgt}"),
               E_VALUE_CUTOFF=E_VALUE_CUTOFF),
          Rule(r"res/normtally\.tsv",
-              preqs=["bin/data_compile.py", "hmm/components.tsv",
+              preqs=["bin/compile_hits.py", "hmm/components.tsv",
                      "hmm/models.tsv", "hmm/properties.tsv", "hmmsearch", "res/"],
               recipe=("{preqs[0]} -t normtally -e {E_VALUE_CUTOFF} "
                       "{preqs[1]} {preqs[2]} {preqs[3]} {hit_files} > {trgt}"),

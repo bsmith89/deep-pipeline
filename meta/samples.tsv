@@ -1,0 +1,5 @@
+sample	treat	date	sample_notes
+AG1	T1	2011	1000 sequences from the top of T1R1
+AG2	T1	2011	next 1000 sequences from T1R1
+DF1	DF	2011	1000 sequences from the top of DFR1
+DF2	DF	2011	next 100 sequences from DFR1

@@ -1,0 +1,53 @@
+An example bioinformatics pipeline using pymake.
+
+Dependencies:
+	PyMake
+	HMMER3
+	getorf (an EMBOSS tool)
+	pandas
+	python3
+
+
+Files have a consistant naming scheme:
+	Any file that is downstream of a sequence file
+	(whether it is a sequence file itself or not)
+	will be named
+
+		<SAMPLE>[.<FILTERS>].<TYPE>
+
+	for instance
+
+		'SAMPLE1.fn'
+
+	would be the raw, unmodified nucleotide sequnce (unaligned) of
+	SAMPLE1's reads.
+
+	<FILTERS> can be a variety of things, for instance
+
+		'SAMPLE1.fused.fq'
+
+	would be the raw, paired-end reads from SAMPLE1 fused together
+	across their overlap to make a FASTQ formatted file (nucleotide).
+
+		'SAMPLE2.fused.orf30.fa'
+	
+	would be the fused reads from SAMPLE2, run through an ORF finder with
+	a minimum length of 30 resulting in a FASTA formatted file of amino-acid
+	sequences. (The ORF sequences, as it turns out, will have the same read
+	names as their source reads, but with '(START-END)' appended to the end to
+	indicate the coordinates in nucleotide space which defines the ORF.
+
+		'SAMPLE1.fused.orf30.TIGR02376.hmmsearch_out'
+	
+	is the hmmsearch tabular output file (with all '# Comments' removed) for
+	SAMPLE1, processed as described above and searched against the TIGR02376
+	profile-HMM.
+
+		'SAMPLE1.fused.orf30.TIGR02376.fn'
+
+	Are the nucleotide sequences of the ORFs which hit TIGR02376 from SAMPLE1.
+
+	As you can see, we can parse out a "middle" portion which is just the
+	filtering, and an optional penultimate item, which is the model, followed
+	by the extension which indicates what type of data is contained in the
+	file.

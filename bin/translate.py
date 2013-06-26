@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+"""Translate in-frame codons."""
 
 import sys
 from Bio.SeqIO import parse, write

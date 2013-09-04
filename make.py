@@ -52,7 +52,7 @@ rules = [Rule("all",
                       "{preqs[1]} {preqs[2]} {preqs[3]} {hit_files} > {trgt}"),
               hit_files=hit_files_str, E_VALUE_CUTOFF=E_VALUE_CUTOFF),
          Rule(r"res/summary\.tsv",
-              preqs=["bin/data_compile.py", "hmm/components.tsv",
+              preqs=["bin/compile_hits.py", "hmm/components.tsv",
                      "hmm/models.tsv", "hmm/properties.tsv",
                      "meta/samples.tsv", "hmmsearch", "res/"],
               recipe=("{preqs[0]} -t summary -s {preqs[4]} -e {E_VALUE_CUTOFF} "

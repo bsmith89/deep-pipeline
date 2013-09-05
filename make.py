@@ -27,21 +27,21 @@ hit_files = ["hit/{sample}.orf{size}.{model}.hmmsearch_out".\
                  format(sample=s, size=MIN_ORF_SIZE, model=m)
              for s, m in product(samples, models)]
 hit_files_str = " ".join(hit_files)
-hit_seqs_files = ["seq/hit/fn/{sample}.orf{size}.{model}.fn".\
-                 format(sample=s, size=MIN_ORF_SIZE, model=m)
-             for s, m in product(samples, models)]
+hit_seqs_files = ["seq/hit/{sample}.orf{size}.{model}.fn".\
+                  format(sample=s, size=MIN_ORF_SIZE, model=m)
+                  for s, m in product(samples, models)]
 
 
 rules = [Rule("all",
-              preqs=["res/hits_figures.png", "res/summary.tsv"]),
-         Rule("res/hits_figures.png",
+              preqs=["res/figures.png", "res/summary.tsv"]),
+         Rule("res/figures.png",
               preqs=["bin/make_hits_figures.py", "meta/samples.tsv",
                      "res/normtally.tsv"],
               recipe="{preqs[0]} -s {preqs[1]} -o {trgt} {preqs[2]}"),
          Rule("hit_seqs", preqs=hit_seqs_files),
-         Rule(r"seq/(([^.]*)(\..*)?\.([^.]*))\.fn",
+         Rule(r"seq/hit/(([^.]*)(\..*)?\.([^.]*))\.fn",
               preqs=["bin/fetch_frags.py", "hit/{0}.hmmsearch_out",
-                     "seq/{1}.fq"],
+                     "seq/{1}.fq", "seq/hit/"],
               recipe=("{preqs[0]} -f fastq -e {E_VALUE_CUTOFF} "
                       "{preqs[1]} {preqs[2]} > {trgt}"),
               E_VALUE_CUTOFF=E_VALUE_CUTOFF),

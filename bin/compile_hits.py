@@ -28,7 +28,7 @@ def forwhich(df, **kwargs):
                                    for key, value in kwargs.items()]), 0)]
 
 
-def compile(hit_file_paths, e_value_cutoff, model_details, samples_data=None):
+def compile(hit_file_paths, e_value_cutoff, model_details, samples_data=pd.DataFrame()):
     """Compile the hmmsearch results in *hit_file_paths*.
 
     If a DataFrame object is passed as *meta*,
@@ -76,7 +76,7 @@ def compile(hit_file_paths, e_value_cutoff, model_details, samples_data=None):
                             norm_tally=norm_tally.unstack()),
                         axis=1).reset_index()
     out = [hits, tally.reset_index(), norm_tally.reset_index(), results]
-    if samples_data:
+    if not samples_data.empty:
         treat = pd.merge(results, samples_data)\
             [['treat', 'sample', 'component', 'norm_tally', 'tally']].groupby(('treat', 'component'))
         treat_mean = treat.mean()
